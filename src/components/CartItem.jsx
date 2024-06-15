@@ -10,12 +10,11 @@ function CartItem({ item }) {
   const handleDelete = (id) => {
     const confirmed = confirm("Do you want to delete this cart?");
     if (confirmed) {
-    dispatch(deleteItemFromCart(id));
-    toast.success("Cart deleted succesfully");
+      dispatch(deleteItemFromCart(id));
+      toast.success("Cart deleted succesfully");
     }
   };
-
-
+  console.log(item);
   return (
     <div className="card card-side w-full flex justify-between bg-base-100 mb-5 shadow-xl items-center h-28 max-w-[650px] lg:ml-10  ">
       <figure>
