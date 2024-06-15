@@ -14,7 +14,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "./features/user/userSlice";
 import { isAuthReady } from "./features/user/userSlice";
 
-import { auth } from "./firebase/fireBaseConfig";
+import { auth } from "./firebase/fireBaseConfig.js";
+
+
 
 import { action as createAction } from "./pages/Create";
 import { loader as singleRecipieLoader } from "./pages/SingleRecipie";
