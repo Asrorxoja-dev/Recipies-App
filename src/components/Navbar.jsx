@@ -9,19 +9,18 @@ import { IoMoonOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 
 const themes = {
-  dark: "dracula",
-  light: "winter",
+  dark: "dark",
+  light: "light",
 };
 function Navbar() {
   const user = useSelector((state) => state.currentUser);
-  const cartTotal = useSelector((state) => state.cart.cartTotal);
-
+  const product = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const logout = () => {
     signOut(auth)
       .then(() => {
-        toast.success("Signout successfully");
+        toast.success("Logout successfully");
         dispatch(clear());
       })
       .catch((error) => {
@@ -63,8 +62,8 @@ function Navbar() {
                 type="checkbox"
                 defaultChecked={theme == "dracula" ? false : true}
               />
-              <IoMoonOutline className="swap-on fill-current w-6 h-6" />
-              <IoSunnyOutline className="swap-off fill-current w-6 h-6" />
+              <IoMoonOutline className="swap-on fill-current w-5 h-5" />
+              <IoSunnyOutline className="swap-off fill-current w-5 h-5" />
             </label>
           </div>
           <Link to="/store">
@@ -72,7 +71,7 @@ function Navbar() {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn  btn-ghost btn-circle">
+                className="btn sm:mr-3 btn-ghost btn-circle">
                 <div className="indicator">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +87,7 @@ function Navbar() {
                     />
                   </svg>
                   <span className="badge badge-sm indicator-item">
-                    {cartTotal}
+                    {product.totalItems}
                   </span>
                 </div>
               </div>
@@ -99,7 +98,9 @@ function Navbar() {
             </div>
           </Link>
           <div className="dropdown dropdown-end flex items-center px-3">
-            <p className="hidden lg:flex">{user.user.displayName}</p>
+            <p className="hidden font-semibold text-sm lg:flex">
+              {user.user.displayName}
+            </p>
 
             <div
               tabIndex={0}

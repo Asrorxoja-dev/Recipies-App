@@ -17,14 +17,6 @@ export const action = async ({ request }) => {
     const method = formData.get("method");
     const category = formData.get("category");
 
-    console.log("Parsed form data:", {
-      title,
-      image,
-      cookingTime,
-      method,
-      category,
-    });
-
     return {
       title,
       image,
@@ -32,6 +24,8 @@ export const action = async ({ request }) => {
       method,
       category,
     };
+
+    
   } catch (error) {
     console.error("Error processing form data:", error);
     throw new Error("Failed to process form data");
@@ -57,6 +51,8 @@ function Create() {
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   };
+
+ 
 
   useEffect(() => {
     if (createAction && !data) {
@@ -119,6 +115,8 @@ function Create() {
             <option value="milliyTaom">Milliy taomlar</option>
             <option value="fastFood">Fast food</option>
             <option value="turkTaom">Turk taomlar</option>
+            <option value="yaponTaomi">Yapon taomlar</option>
+            <option value="yevropaTaomi">Yevropa taomlar</option>
           </select>
           <FormInput name="method" type="text" label="Method" />
           <div className="mt-5">

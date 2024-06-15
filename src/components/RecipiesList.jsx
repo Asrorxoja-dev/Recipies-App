@@ -3,9 +3,16 @@ import { Link } from "react-router-dom";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase/fireBaseConfig";
 import toast from "react-hot-toast";
+import { GoTrash } from "react-icons/go";
+import { MdOutlineWatchLater } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../features/user/cart/cartSlice";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 function RecipiesList() {
   const [recipes, setRecipes] = useState([]);
+  console.log(recipes);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -29,35 +36,49 @@ function RecipiesList() {
     }
   };
 
+  const handleAddToCart = (recipe) => {
+    dispatch(addItemToCart(recipe));
+    toast.success("Recipe added to cart");
+  };
+
   return (
     <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
       {recipes.map((recipe) => (
-        <div key={recipe.id} className="card mb-10 bg-base-100  shadow-xl">
-          <button
-            onClick={() => handleDelete(recipe.id)}
-            className="flex justify-end pr-5 mt-5">
-            ✖️
-          </button>
+        <div key={recipe.id} className="card mb-10 bg-base-100 shadow-xl">
+          <figure>
+            <img
+              src={recipe.image}
+              className=":md-h-auto h-[200px] w-full rounded-b-md object-cover"
+              alt="food image"
+            />
+          </figure>
+
           <Link to={`/singleRecipie/${recipe.id}`}>
             <div className="card-body">
-              <h2 className="card-title">{recipe.title}</h2>
-              <p className="line-clamp-3">{recipe.method}</p>
-
-              <div className="card-actions  flex justify-end">
-                <p className=" btn btn-sm btn-accent text-white max-w-28 ">
+              <div className="flex justify-between">
+                <h2 className="card-title">{recipe.title}</h2>
+                <p className="btn btn-sm max-w-32">
+                  <MdOutlineWatchLater />
                   {recipe.cookingTime} minutes
                 </p>
               </div>
+              <p className="line-clamp-3">{recipe.method}</p>
             </div>
-
-            <figure>
-              <img
-                src={recipe.image}
-                className=":md-h-auto h-[200px] w-full rounded-b-md object-cover"
-                alt="food image"
-              />
-            </figure>
           </Link>
+          <div className="card-actions items-center flex justify-between pb-5 px-5">
+            <button
+              onClick={() => handleAddToCart(recipe)}
+              className="btn btn-sm btn-primary text-white">
+              <MdOutlineShoppingCart className="w-4 h-4" />
+              Add to Cart
+            </button>
+            <button
+              onClick={() => handleDelete(recipe.id)}
+              className="btn btn-sm btn-error text-white">
+              <GoTrash />
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </div>

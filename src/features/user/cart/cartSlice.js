@@ -1,85 +1,83 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "react-hot-toast";
 
-const defaultState = {
-  cartItems: [],
-  numItemsInCart: 0,
-  cartTotal: 0,
-  shipping: 500,
-  tax: 0,
-  orderTotal: 0,
-};
-
-const calculateTotals = (state) => {
-  state.tax = 0.1 * state.cartTotal;
-  state.orderTotal = state.cartTotal + state.shipping + state.tax;
-  localStorage.setItem("cart", JSON.stringify(state));
-};
 
 const loadState = () => {
   try {
     const serializedState = localStorage.getItem("cart");
     if (serializedState === null) {
-      return defaultState;
+      return {
+        items: [],
+        totalItems: 0,
+      };
     }
     return JSON.parse(serializedState);
   } catch (err) {
-    return defaultState;
+    return {
+      items: [],
+      totalItems: 0,
+    };
   }
 };
 
-const cartSlice = createSlice({
+const saveState = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("cart", serializedState);
+  } catch (err) {
+   
+  }
+};
+
+const initialState = loadState();
+
+export const cartSlice = createSlice({
   name: "cart",
-  initialState: loadState(),
+  initialState,
   reducers: {
-    increaseAmount: (state, { payload }) => {
-      const item = state.cartItems.find((product) => product.id === payload);
-      if (item) {
-        item.amount += 1;
-        state.cartTotal += item.price;
-        calculateTotals(state);
-      }
-    },
-
-    decreaseAmount: (state, { payload }) => {
-      const item = state.cartItems.find((product) => product.id === payload);
-      if (item && item.amount > 0) {
-        item.amount -= 1;
-        state.cartTotal -= item.price;
-        calculateTotals(state);
-      }
-    },
-
-    addItem: (state, { payload }) => {
-      const { product } = payload;
-      const item = state.cartItems.find((i) => i.id === product.id);
-
-      if (item) {
-        item.amount += product.amount;
+    addItemToCart(state, { payload }) {
+      const newItem = payload;
+      const existingItem = state.items.find((item) => item.id === newItem.id);
+      state.totalItems += newItem.quantity || 1;
+      if (!existingItem) {
+        state.items.push({ ...newItem, quantity: newItem.quantity || 1 });
       } else {
-        state.cartItems.push(product);
+        existingItem.quantity += newItem.quantity || 1;
       }
-
-      state.numItemsInCart += product.amount;
-      state.cartTotal += product.price * product.amount;
-      calculateTotals(state);
-      toast.success("Item added to cart");
+      saveState(state); 
     },
-
-    removeItem: (state, { payload }) => {
-      const { id } = payload;
-      const product = state.cartItems.find((i) => i.id === id);
-      if (product) {
-        state.cartItems = state.cartItems.filter((i) => i.id !== id);
-        state.numItemsInCart -= product.amount;
-        state.cartTotal -= product.price * product.amount;
-        calculateTotals(state);
-        toast.success("Item removed from cart");
+    decreaseEl(state, { payload }) {
+      const id = payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      if (existingItem) {
+        state.totalItems--;
+        if (existingItem.quantity === 1) {
+          state.items = state.items.filter((item) => item.id !== id);
+        } else {
+          existingItem.quantity--;
+        }
+        saveState(state);
+      }
+    },
+    increaseEl(state, { payload }) {
+      const id = payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      if (existingItem) {
+        state.totalItems++;
+        existingItem.quantity++;
+        saveState(state);
+      }
+    },
+    deleteItemFromCart(state, { payload }) {
+      const id = payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      if (existingItem) {
+        state.totalItems -= existingItem.quantity;
+        state.items = state.items.filter((item) => item.id !== id);
+        saveState(state); // Save state after modification
       }
     },
   },
 });
 
-export const { addItem, removeItem, increaseAmount, decreaseAmount } =
-  cartSlice.actions;
+export const { addItemToCart, decreaseEl, increaseEl, deleteItemFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -21,6 +21,8 @@ import { loader as singleRecipieLoader } from "./pages/SingleRecipie";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { onAuthStateChanged } from "firebase/auth";
 import Chart from "./pages/Chart";
+import BarChart from "./pages/BarChart";
+import PieChart from "./pages/PieChart";
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +60,14 @@ function App() {
           path: "/chart",
           element: <Chart />,
         },
+        {
+          path: "/barchart",
+          element: <BarChart />,
+        },
+        {
+          path: "/piechart",
+          element: <PieChart />,
+        },
       ],
     },
     {
@@ -80,7 +90,7 @@ function App() {
     });
   }, []);
 
-  return <>{authReady && <RouterProvider router={routes} />}</>;
+  return <RouterProvider router={routes} />;
 }
 
 export default App;

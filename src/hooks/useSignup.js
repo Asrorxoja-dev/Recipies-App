@@ -1,12 +1,12 @@
 import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { auth, googleProvider } from '../firebase/firebaseConfig'
+import { auth, googleProvider } from '../firebase/fireBaseConfig'
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast'
 import { login } from '../features/user/userSlice'
 
 export function useSignup(){
     const dispatch = useDispatch();
-    // Login with email and password
+  
     const signup = (displayName, email, password, photoURL) => {
         createUserWithEmailAndPassword(auth, email, password, photoURL)
             .then(async (userCredential) => {
@@ -23,7 +23,6 @@ export function useSignup(){
             });
     };
 
-    // Login with gmail with popup
     const signUpWithGoogleProvider = () => {
         signInWithPopup(auth, googleProvider)
            .then((result) => {
