@@ -24,7 +24,7 @@ function Login() {
         loop
         muted
       />
-      <div className="bg-slate-400/50 py-10 px-10 rounded-lg absolute">
+      <div className="bg-slate-500 py-10 px-10 rounded-lg absolute">
         <h1 className="text-3xl text-white font-bold mb-5">Login</h1>
         <form onSubmit={handleSubmit}>
           <div className="items-center mb-5">
@@ -36,7 +36,7 @@ function Login() {
               type="text"
               placeholder="Enter your email...  "
               id="email"
-              className="input input-bordered input-primary w-full max-w-xs"
+              className="input input-bordered  w-full max-w-xs"
               required
             />
           </div>
@@ -49,7 +49,7 @@ function Login() {
               type="password"
               id="password"
               placeholder="Enter your password..."
-              className="input input-bordered input-error w-full max-w-xs"
+              className="input input-bordered  w-full max-w-xs"
               required
             />
           </div>

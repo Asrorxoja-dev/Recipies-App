@@ -34,7 +34,7 @@ function Signup() {
         loop
         muted
       />
-      <div className=" bg-slate-500/35 py-2 px-10 rounded-lg absolute">
+      <div className=" bg-slate-500 py-2 px-10 rounded-lg absolute">
         <h1 className="text-3xl font-bold mb-5 text-center text-white">
           Sign Up
         </h1>
@@ -48,7 +48,7 @@ function Signup() {
               type="text"
               placeholder="Enter your user name"
               id="username"
-              className="input input-bordered input-primary w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs"
               required
             />
           </div>
@@ -61,7 +61,7 @@ function Signup() {
               type="url"
               id="photoUrl"
               placeholder="Enter your url"
-              className="input input-bordered input-error w-full max-w-xs"
+              className="input input-bordered  w-full max-w-xs"
               required
             />
           </div>
@@ -74,7 +74,7 @@ function Signup() {
               type="email"
               placeholder="Enter your email"
               id="email"
-              className="input input-bordered input-primary w-full max-w-xs"
+              className="input input-bordered  w-full max-w-xs"
               required
             />
           </div>
@@ -87,7 +87,7 @@ function Signup() {
               type="password"
               id="password"
               placeholder="Enter your password"
-              className="input input-bordered input-error w-full max-w-xs"
+              className="input input-bordered  w-full max-w-xs"
               required
             />
           </div>

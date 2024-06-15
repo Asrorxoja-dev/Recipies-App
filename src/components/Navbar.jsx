@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { IoSunnyOutline } from "react-icons/io5";
 import { IoMoonOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
+import Weather from "./Weather";
 
 const themes = {
   dark: "dark",
@@ -53,6 +54,9 @@ function Navbar() {
           <Link to="/" className="btn btn-ghost text-[15px] lg:text-xl">
             Kitchen App
           </Link>
+        </div>
+        <div className="flex justify-center items-center">
+          <Weather />
         </div>
         <div className="flex-none">
           <div className="flex justify-end items-center ml-5">

@@ -24,8 +24,6 @@ export const action = async ({ request }) => {
       method,
       category,
     };
-
-    
   } catch (error) {
     console.error("Error processing form data:", error);
     throw new Error("Failed to process form data");
@@ -51,8 +49,6 @@ function Create() {
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   };
-
- 
 
   useEffect(() => {
     if (createAction && !data) {
