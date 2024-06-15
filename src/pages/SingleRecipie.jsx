@@ -107,7 +107,7 @@ function SingleRecipe() {
           </h3>
           <div className="flex items-center gap-10  justify-end">
             <div className="mb-5 text-center ">
-              <div className="flex items-center gap-5">
+              <div className="flex  items-center gap-5">
                 <button className="btn btn-secces" onClick={cartDecrease}>
                   <FaMinus />
                 </button>
@@ -117,6 +117,8 @@ function SingleRecipe() {
                 <button className="btn btn-succes" onClick={cartIncrease}>
                   <FaPlus />
                 </button>
+              </div>
+              <div>
                 <button
                   onClick={addToChartHandler}
                   className="btn btn-primary text-white w-[140px]">
