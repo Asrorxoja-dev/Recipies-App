@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase/fireBaseConfig";
-
+import { db } from "../firebase/firebaseConfig";
 
 export const loader = async ({ params }) => {
   const docRef = doc(db, "recipies", params.id);
@@ -22,11 +21,6 @@ function SingleRecipie() {
   const [cartNumber, setCartNumber] = useState(1);
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
-
- 
-
-
- 
 
   return (
     <div>
@@ -82,8 +76,6 @@ function SingleRecipie() {
             <span className="font-bold">Method:</span> {data.method}
           </h3>
           <div className="flex items-center gap-10 justify-end">
-          
-
             <div>
               <Link
                 className="bg-red-500 p-2 text-white flex justify-center mx-auto w-20 rounded px-4"

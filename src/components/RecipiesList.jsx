@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
-import { db } from "../firebase/fireBaseConfig";
+import { db } from "../firebase/firebaseConfig";
 import toast from "react-hot-toast";
 import { GoTrash } from "react-icons/go";
 import { MdOutlineWatchLater } from "react-icons/md";

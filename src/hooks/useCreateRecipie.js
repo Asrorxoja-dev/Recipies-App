@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase/fireBaseConfig";
+import { db } from "../firebase/firebaseConfig";
 
 export const useCreateRecipie = () => {
   const [data, setData] = useState(null);
