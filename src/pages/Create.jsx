@@ -3,6 +3,7 @@ import { Form, useActionData, redirect } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import { useCreateRecipie } from "../hooks/useCreateRecipie";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";  // Import useSelector to get the current user
 import toast from "react-hot-toast";
 
 export const action = async ({ request }) => {
@@ -16,6 +17,7 @@ export const action = async ({ request }) => {
     const cookingTime = formData.get("cookingTime");
     const method = formData.get("method");
     const category = formData.get("category");
+    const uid = formData.get("uid");  // Get user ID from the form data
 
     return {
       title,
@@ -23,6 +25,7 @@ export const action = async ({ request }) => {
       cookingTime,
       method,
       category,
+      uid,  // Include user ID in the returned data
     };
   } catch (error) {
     console.error("Error processing form data:", error);
@@ -36,7 +39,9 @@ function Create() {
   const [ingredients, setIngredients] = useState([]);
   const [ingredient, setIngredient] = useState("");
   const [category, setCategory] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // State to manage submit button disabled state
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.currentUser);  // Get the current user from Redux store
 
   const addIngredients = (e) => {
     e.preventDefault();
@@ -61,14 +66,19 @@ function Create() {
     if (data) {
       navigate("/");
       toast.success("Added new recipe successfully");
+      setIsSubmitting(false); // Enable submit button after successful submission
     }
   }, [createAction, data, navigate, ingredients, addNewDoc]);
+
+  const handleSubmit = () => {
+    setIsSubmitting(true); // Disable submit button when form is submitted
+  };
 
   return (
     <div className="grid place-items-center">
       <div className="max-w-96 w-full">
         <h1 className="text-3xl text-center font-bold">Create New Recipe</h1>
-        <Form method="post">
+        <Form method="post" onSubmit={handleSubmit}>
           <FormInput name="title" type="text" label="Title" />
           <div className="flex items-center gap-5">
             <label className="form-control w-full mb-3">
@@ -115,9 +125,14 @@ function Create() {
             <option value="yevropaTaomi">Yevropa taomlar</option>
           </select>
           <FormInput name="method" type="text" label="Method" />
+          <input type="hidden" name="uid" value={user.uid} />  {/* Add hidden input for user ID */}
           <div className="mt-5">
-            <button className="btn btn-secondary w-full mb-3" type="submit">
-              Submit
+            <button
+              className="btn btn-secondary w-full mb-3"
+              type="submit"
+              disabled={isSubmitting} // Disable button when form is submitting
+            >
+              {isSubmitting ? "Submitting..." : "Submit"} {/* Change button text to indicate submission */}
             </button>
           </div>
         </Form>
