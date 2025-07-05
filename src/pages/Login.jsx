@@ -3,6 +3,7 @@ import { useSignup } from "../hooks/useSignup";
 import { useRef } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import backImg from "../../public/backImg.jpg";
 function Login() {
   const { signUpWithGoogleProvider } = useSignup();
   const { login } = useLogin();
@@ -15,7 +16,10 @@ function Login() {
   };
 
   return (
-    <div className="h-screen grid place-items-center top-0">
+    <div
+      className="h-screen grid place-items-center top-0 "
+      style={{ backgroundImage: `url(${backImg}) ` }}
+    >
       <div className="bg-slate-600 py-10 px-10 rounded-lg absolute">
         <h1 className="text-3xl text-white font-bold mb-5">Login</h1>
         <form onSubmit={handleSubmit}>

@@ -1,5 +1,6 @@
 import { useSignup } from "../hooks/useSignup";
 import { useRef } from "react";
+import backImg from "../../public/backImg.jpg";
 
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
@@ -26,7 +27,7 @@ function Signup() {
   };
 
   return (
-    <div className="h-screen grid  place-items-center">
+    <div className="h-screen grid  place-items-center" style={{ backgroundImage: `url(${backImg})` }} >
       <div className=" bg-slate-600 py-2 mt-5 px-10 rounded-lg absolute">
         <h1 className="text-3xl font-bold mb-5 text-center text-white">
           Sign Up
