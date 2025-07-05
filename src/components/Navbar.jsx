@@ -56,17 +56,6 @@ function Navbar() {
         </div>
 
         <div className="flex-none">
-          <div className="flex justify-end items-center ml-5">
-            <label className="swap swap-rotate">
-              <input
-                onClick={handleClick}
-                type="checkbox"
-                defaultChecked={theme == "dracula" ? false : true}
-              />
-              <IoMoonOutline className="swap-on fill-current w-5 h-5" />
-              <IoSunnyOutline className="swap-off fill-current w-5 h-5" />
-            </label>
-          </div>
           <Link to="/store">
             <div className="dropdown dropdown-end">
               <div
@@ -101,6 +90,17 @@ function Navbar() {
               ></div>
             </div>
           </Link>
+          <div className="flex justify-end items-center mr-5">
+            <label className="swap swap-rotate">
+              <input
+                onClick={handleClick}
+                type="checkbox"
+                defaultChecked={theme == "dracula" ? false : true}
+              />
+              <IoMoonOutline className="swap-on fill-current w-5 h-5" />
+              <IoSunnyOutline className="swap-off fill-current w-5 h-5" />
+            </label>
+          </div>
           <div className="dropdown dropdown-end flex items-center px-3">
             <p className="hidden font-semibold text-sm lg:flex">
               {user.user.displayName}
