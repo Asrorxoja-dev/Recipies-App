@@ -15,7 +15,11 @@ function Home() {
     );
   }
 
-  const { data: recipies, error, isLoading } = useCollection('recipie', ["uid", "==", user.uid]);
+  const {
+    data: recipies,
+    error,
+    isLoading,
+  } = useCollection("recipie", ["uid", "==", user.uid]);
 
   // Handle loading state
   if (isLoading) {
@@ -39,9 +43,7 @@ function Home() {
   return (
     <div>
       {recipies && recipies.length > 0 ? (
-        <h1 className="text-2xl mt-2 mb-7 ">
-          All Recipes - {recipies.length}
-        </h1>
+        <h1 className="text-2xl mt-2 ">All Recipes - {recipies.length}</h1>
       ) : (
         <h1 className="loading w-10 mx-auto mt-40 items-center justify-center flex object-cover">
           No Recipes yet

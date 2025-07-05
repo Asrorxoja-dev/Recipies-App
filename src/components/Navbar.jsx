@@ -47,7 +47,7 @@ function Navbar() {
   }, [theme]);
 
   return (
-    <div className="px-10 py-2  border-b">
+    <div className="px-10 ">
       <div className="navbar ">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost text-[15px] lg:text-xl">

@@ -41,7 +41,7 @@ function RecipiesList() {
   };
 
   return (
-    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-20">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-10">
       {recipes.map((recipe) => (
         <div key={recipe.id} className="card mb-10 bg-base-100 shadow-xl">
           <figure>
