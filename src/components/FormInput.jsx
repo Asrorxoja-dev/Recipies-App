@@ -7,7 +7,7 @@ function FormInput({label, type, name}) {
   <div className="label">
     <span className="label-text">{label}</span>
   </div>
-  <input type={type} name={name} placeholder="Type here" className="input input-bordered w-full" />
+  <input type={type} required name={name} placeholder="Type here" className="input input-bordered w-full" />
 </label>
     </div>
   )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import { getDocs, collection } from "firebase/firestore";
-import { db } from "../firebase/fireBaseConfig";
+import { db } from "../firebase/firebaseConfig";
 
 const BarChart = () => {
   const [options, setOptions] = useState({

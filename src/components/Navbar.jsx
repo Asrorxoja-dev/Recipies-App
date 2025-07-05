@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase/fireBaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 import { clear } from "../features/user/userSlice";
 import toast from "react-hot-toast";
 import { IoSunnyOutline } from "react-icons/io5";
