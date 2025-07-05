@@ -4,12 +4,14 @@ import { useRef } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import backImg from "../../public/backImg.jpg";
+
 function Login() {
   const { signUpWithGoogleProvider } = useSignup();
   const { login } = useLogin();
 
   const email = useRef();
   const password = useRef();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email.current.value, password.current.value);
@@ -17,52 +19,53 @@ function Login() {
 
   return (
     <div
-      className="h-screen grid place-items-center top-0 "
-      style={{ backgroundImage: `url(${backImg}) ` }}
+      className="min-h-screen w-full bg-cover bg-center flex items-center justify-center"
+      style={{ backgroundImage: `url(${backImg})` }}
     >
-      <div className="bg-slate-600 py-10 px-10 rounded-lg absolute">
-        <h1 className="text-3xl text-white font-bold mb-5">Login</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="items-center mb-5">
-            <label className="mr-5 text-white" htmlFor="email">
-              Email:{" "}
-            </label>
+      <div className="bg-white/20 backdrop-blur-md border border-white/30 shadow-xl rounded-2xl p-8 w-[90%] max-w-md">
+        <h2 className="text-4xl font-bold text-white text-center mb-6">Welcome Back</h2>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label htmlFor="email" className="text-white text-sm font-semibold">Email</label>
             <input
               ref={email}
-              type="text"
-              placeholder="Enter your email...  "
+              type="email"
               id="email"
-              className="input input-bordered  w-full max-w-xs"
+              placeholder="Enter your email"
+              className="w-full mt-1 px-4 py-2 rounded-xl bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div className="items-center mb-5">
-            <label className="mr-5 text-white" htmlFor="password">
-              Password
-            </label>
+          <div>
+            <label htmlFor="password" className="text-white text-sm font-semibold">Password</label>
             <input
               ref={password}
               type="password"
               id="password"
-              placeholder="Enter your password..."
-              className="input input-bordered  w-full max-w-xs"
+              placeholder="Enter your password"
+              className="w-full mt-1 px-4 py-2 rounded-xl bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div className="flex flex-col gap-3">
-            <button className="btn btn-primary btn-sm md:btn-md">Login</button>
-            <button
-              type="button"
-              onClick={signUpWithGoogleProvider}
-              className="btn btn-sm  md:btn-md btn-white"
-            >
-              <FcGoogle className="w-6 h-6" /> Google
-            </button>
-            <Link className="btn btn-sm md:btn-md " to="/signup">
-              If you don't have any account?{" "}
-              <span className="font-bold text-primary link ">Sign up</span>
+          <button
+            type="submit"
+            className="w-full py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition duration-300"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            onClick={signUpWithGoogleProvider}
+            className="w-full py-2 rounded-xl bg-white flex items-center justify-center gap-3 font-medium shadow hover:shadow-lg transition"
+          >
+            <FcGoogle className="text-xl" /> Login with Google
+          </button>
+          <p className="text-center text-white text-sm mt-4">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-blue-300 font-bold underline hover:text-blue-500">
+              Sign up
             </Link>
-          </div>
+          </p>
         </form>
       </div>
     </div>

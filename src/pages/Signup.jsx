@@ -1,9 +1,9 @@
 import { useSignup } from "../hooks/useSignup";
 import { useRef } from "react";
-import backImg from "../../public/backImg.jpg";
-
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import backImg from "../../public/backImg.jpg";
+
 function Signup() {
   const displayName = useRef();
   const email = useRef();
@@ -27,79 +27,78 @@ function Signup() {
   };
 
   return (
-    <div className="h-screen grid  place-items-center" style={{ backgroundImage: `url(${backImg})` }} >
-      <div className=" bg-slate-600 py-2 mt-5 px-10 rounded-lg absolute">
-        <h1 className="text-3xl font-bold mb-5 text-center text-white">
-          Sign Up
-        </h1>
-        <form onSubmit={handleSubmit}>
-          <div className="items-center mb-3">
-            <label className="mr-5 text-white" htmlFor="username">
-              Name:{" "}
-            </label>
+    <div
+      className="min-h-screen w-full bg-cover bg-center flex items-center justify-center"
+      style={{ backgroundImage: `url(${backImg})` }}
+    >
+      <div className="bg-white/20 backdrop-blur-md border border-white/30 shadow-xl rounded-2xl p-8 w-[90%] max-w-md">
+        <h2 className="text-4xl font-bold text-white text-center mb-6">Create Account</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="username" className="text-white text-sm font-semibold">Name</label>
             <input
               ref={displayName}
               type="text"
-              placeholder="Enter your user name"
               id="username"
-              className="input input-bordered w-full max-w-xs"
+              placeholder="Your name"
+              className="w-full mt-1 px-4 py-2 rounded-xl bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div className="items-center mb-3">
-            <label className="mr-5 text-white" htmlFor="photoUrl">
-              Photo Url:
-            </label>
+          <div>
+            <label htmlFor="photoUrl" className="text-white text-sm font-semibold">Photo URL</label>
             <input
               ref={photoUrl}
               type="url"
               id="photoUrl"
-              placeholder="Enter your url"
-              className="input input-bordered  w-full max-w-xs"
+              placeholder="Profile photo link"
+              className="w-full mt-1 px-4 py-2 rounded-xl bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div className="items-center mb-3">
-            <label className="mr-5 text-white" htmlFor="email">
-              Email:{" "}
-            </label>
+          <div>
+            <label htmlFor="email" className="text-white text-sm font-semibold">Email</label>
             <input
               ref={email}
               type="email"
-              placeholder="Enter your email"
               id="email"
-              className="input input-bordered  w-full max-w-xs"
+              placeholder="Enter your email"
+              className="w-full mt-1 px-4 py-2 rounded-xl bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div className="items-center mb-7">
-            <label className="mr-5 text-white" htmlFor="password">
-              Password
-            </label>
+          <div>
+            <label htmlFor="password" className="text-white text-sm font-semibold">Password</label>
             <input
               ref={password}
               type="password"
               id="password"
               placeholder="Enter your password"
-              className="input input-bordered  w-full max-w-xs"
+              className="w-full mt-1 px-4 py-2 rounded-xl bg-white/70 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div className="flex flex-col gap-3">
-            <button className="btn btn-primary btn-sm md:btn-md">
-              Sign Up
-            </button>
-            <button
-              onClick={handleGoogleLogin}
-              className="btn btn-sm md:btn-md btn-white "
-            >
-              <FcGoogle className="w-6 h-6" /> Google
-            </button>
-            <Link className="btn mb-6 btn-sm md:btn-md" to="/login">
-              Are you already an accaunt ?{" "}
-              <span className="font-bold link text-primary ">Login</span>
+
+          <button
+            type="submit"
+            className="w-full py-2 mt-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition duration-300"
+          >
+            Sign Up
+          </button>
+
+          <button
+            onClick={handleGoogleLogin}
+            className="w-full py-2 flex items-center justify-center gap-3 mt-2 rounded-xl bg-white font-medium shadow hover:shadow-lg transition"
+          >
+            <FcGoogle className="text-xl" /> Sign up with Google
+          </button>
+
+          <p className="text-center text-white text-sm mt-4">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-300 font-bold underline hover:text-blue-500">
+              Login
             </Link>
-          </div>
+          </p>
         </form>
       </div>
     </div>
