@@ -11,7 +11,6 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 function RecipiesList() {
   const [recipes, setRecipes] = useState([]);
-  console.log(recipes);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -68,13 +67,15 @@ function RecipiesList() {
           <div className="card-actions items-center flex justify-between pb-5 px-5">
             <button
               onClick={() => handleAddToCart(recipe)}
-              className="btn btn-sm btn-primary text-white">
+              className="btn btn-sm btn-primary text-white"
+            >
               <MdOutlineShoppingCart className="w-4 h-4" />
               Add to Cart
             </button>
             <button
               onClick={() => handleDelete(recipe.id)}
-              className="btn btn-sm btn-error text-white">
+              className="btn btn-sm btn-error text-white"
+            >
               <GoTrash />
               Delete
             </button>

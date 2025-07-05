@@ -1,6 +1,6 @@
 import { useSignup } from "../hooks/useSignup";
 import { useRef } from "react";
-import video from "../video/vid.mp4";
+
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 function Signup() {
@@ -27,14 +27,7 @@ function Signup() {
 
   return (
     <div className="h-screen grid  place-items-center">
-      <video
-        className="w-full h-[630px] object-cover"
-        src={video}
-        autoPlay
-        loop
-        muted
-      />
-      <div className=" bg-slate-500 py-2 px-10 rounded-lg absolute">
+      <div className=" bg-slate-600 py-2 mt-5 px-10 rounded-lg absolute">
         <h1 className="text-3xl font-bold mb-5 text-center text-white">
           Sign Up
         </h1>
@@ -97,7 +90,8 @@ function Signup() {
             </button>
             <button
               onClick={handleGoogleLogin}
-              className="btn btn-sm md:btn-md btn-white ">
+              className="btn btn-sm md:btn-md btn-white "
+            >
               <FcGoogle className="w-6 h-6" /> Google
             </button>
             <Link className="btn mb-6 btn-sm md:btn-md" to="/login">

@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 import { IoSunnyOutline } from "react-icons/io5";
 import { IoMoonOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
-import Weather from "./Weather";
 
 const themes = {
   dark: "dark",
@@ -52,12 +51,10 @@ function Navbar() {
       <div className="navbar ">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost text-[15px] lg:text-xl">
-            Kitchen App
+            Recipies App
           </Link>
         </div>
-        <div className="flex justify-center items-center">
-          <Weather />
-        </div>
+
         <div className="flex-none">
           <div className="flex justify-end items-center ml-5">
             <label className="swap swap-rotate">
@@ -75,14 +72,16 @@ function Navbar() {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn sm:mr-3 btn-ghost btn-circle">
+                className="btn sm:mr-3 btn-ghost btn-circle"
+              >
                 <div className="indicator">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor">
+                    stroke="currentColor"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -98,7 +97,8 @@ function Navbar() {
 
               <div
                 tabIndex={0}
-                className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"></div>
+                className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+              ></div>
             </div>
           </Link>
           <div className="dropdown dropdown-end flex items-center px-3">
@@ -109,14 +109,16 @@ function Navbar() {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar">
+              className="btn btn-ghost btn-circle avatar"
+            >
               <div className="w-9  rounded-full">
                 <img alt="user" src={user.user.photoURL} />
               </div>
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content  mt-20 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              className="menu menu-sm dropdown-content  mt-20 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
               <li>
                 <Link to="/">Home</Link>
               </li>
