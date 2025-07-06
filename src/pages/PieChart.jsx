@@ -59,12 +59,7 @@ const PieChart = () => {
     <div className="mb-10">
       <h2 className="font-bold text-lg">Foods categories statistic</h2>
       <div id="chart">
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="pie"
-          width={480}
-        />
+        <ReactApexChart options={options} series={series} type="pie" />
       </div>
       <div id="html-dist"></div>
     </div>

@@ -4,7 +4,7 @@ import BarChart from "./BarChart";
 
 function Chart() {
   return (
-    <div className="flex mt-10  justify-around items-center ">
+    <div className="lg:flex mt-10  lg:justify-around  items-center ">
       <PieChart />
       <BarChart />
     </div>

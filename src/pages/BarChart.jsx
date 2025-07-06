@@ -71,7 +71,7 @@ const BarChart = () => {
       <h2 className="font-bold">Cooking times statistic, (in minutes)</h2>
       <div className="row">
         <div className="mixed-chart">
-          <Chart options={options} series={series} type="bar" width="480" />
+          <Chart options={options} series={series} type="bar" />
         </div>
       </div>
     </div>
