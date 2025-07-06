@@ -47,7 +47,7 @@ function RecipiesList() {
           <figure>
             <img
               src={recipe.image}
-              className=":md-h-auto h-[200px] w-full rounded-b-md object-cover"
+              className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-b-md"
               alt="food image"
             />
           </figure>

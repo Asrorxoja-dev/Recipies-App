@@ -47,10 +47,13 @@ function Navbar() {
   }, [theme]);
 
   return (
-    <div className="px-10 ">
+    <div className="lg:px-10  ">
       <div className="navbar ">
         <div className="flex-1">
-          <Link to="/" className="btn btn-ghost text-[15px] lg:text-xl">
+          <Link
+            to="/"
+            className="btn btn-ghost lg:mr-0 mr-10  text-[15px] lg:text-xl"
+          >
             Recipies App
           </Link>
         </div>
@@ -90,7 +93,7 @@ function Navbar() {
               ></div>
             </div>
           </Link>
-          <div className="flex justify-end items-center mr-5">
+          <div className="flex justify-end items-center ">
             <label className="swap swap-rotate">
               <input
                 onClick={handleClick}
