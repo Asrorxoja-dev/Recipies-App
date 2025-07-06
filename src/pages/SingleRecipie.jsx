@@ -105,8 +105,8 @@ function SingleRecipe() {
           <h3 className="text-x mb-5">
             <span className="font-bold">Method:</span> {data.method}
           </h3>
-          <div className="flex items-center gap-10  justify-end">
-            <div className="mb-5 text-center ">
+          <div className="flex items-center  justify-end gap-5">
+            <div className=" text-center ">
               <div className="flex  items-center gap-5">
                 <button className="btn btn-secces" onClick={cartDecrease}>
                   <FaMinus />
@@ -118,18 +118,20 @@ function SingleRecipe() {
                   <FaPlus />
                 </button>
               </div>
-              <div>
-                <button
-                  onClick={addToChartHandler}
-                  className="btn btn-primary text-white w-[140px]">
-                  Add item
-                </button>
-              </div>
             </div>
-            <div className="mb-5">
+            <div>
+              <button
+                onClick={addToChartHandler}
+                className="btn btn-primary text-white lg:w-[140px]"
+              >
+                Add item
+              </button>
+            </div>
+            <div>
               <Link
-                className="bg-red-500 p-2 text-white flex justify-center mx-auto w-20 rounded px-4"
-                to="/">
+                className="bg-red-500 p-2 text-white flex justify-center mx-auto lg:w-20 rounded px-4"
+                to="/"
+              >
                 Back
               </Link>
             </div>
