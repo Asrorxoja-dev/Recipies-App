@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "../components/CartItem";
-import Order from "../components/Order";
 
 function Store() {
   const cart = useSelector((state) => state.cart);
@@ -15,9 +14,7 @@ function Store() {
             return <CartItem key={item.id} item={item} />;
           })}
         </ul>
-        <div>
-          <Order />
-        </div>
+       
       </div>
     </div>
   );
